@@ -13,6 +13,11 @@ author: "Alfonso"
 tags: []
 ---
 
+import { Image } from "astro:assets";
+import Academica from "../../assets/tipos-educacion/educacion-academica.jpg";
+import Profesional from "../../assets/tipos-educacion/educacion-profesional.jpg";
+import Financiera from "../../assets/tipos-educacion/educacion-financiera.jpg";
+
 Todos sabemos que necesitamos educación y prepararnos para poder tener una vida decorosa. Al menos eso es lo que nos dicen nuestros padres.
 
 De niño te llevan a la escuela y te exigen sacar buenas calificaciones para posteriormente entrar la universidad para que así tu futuro económico vislumbre aún mejor.
@@ -29,17 +34,44 @@ Existen tres tipos de educación indispensables en la vida de una persona para p
 
 ### Educacion académica
 
+<Image
+  src={Academica}
+  alt="Niños en un salón de escuela"
+  width={768}
+  format="avif"
+  quality="high"
+  class="mx-auto h-96 object-cover rounded-lg shadow"
+/>
+
 Es la educación que recibimos desde niño en la escuela. Donde aprendemos a leer y escribir y las operaciones matemáticas básicas. Además de otras materias que complementan nuestra educación básica en general.
 
 Esta educación es básica e indispensable para empezar a desarrollarnos socialmente.
 
 ### Educacion profesional
 
+<Image
+  src={Profesional}
+  alt="Recibiendo diploma graduación universitaria"
+  width={768}
+  format="avif"
+  quality="high"
+  class="mx-auto h-96 object-cover rounded-lg shadow"
+/>
+
 Este tipo de educación es más especializada que la anterior y es la que adquirimos en la universidad o en una escuela técnica.
 
 Esta educación nos prepara para desempeñar un oficio mediante el cual podremos subsistir económicamente.
 
 ### Educacion financiera
+
+<Image
+  src={Financiera}
+  alt="Leyendo libro sobre educación financiera"
+  width={768}
+  format="avif"
+  quality="high"
+  class="mx-auto h-96 object-cover rounded-lg shadow"
+/>
 
 Con este tipo de educación se aprende el juego del dinero. Se aprende cómo crearlo, administrarlo, incrementarlo y mantenerlo.
 
