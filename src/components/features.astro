@@ -8,18 +8,21 @@ const features = [
     description:
       "Millones de personas terminan la escuela, sólo para quedar atrapados en trabajos que no les gustan. Saben que les falta algo en la vida. Muchas personas también están atrapadas financieramente, ganando lo suficiente para sobrevivir, queriendo ganar más dinero pero no sabiendo qué hacer.",
     icon: "bx:bxs-briefcase",
+    post: "/blog/el-cuadrante-del-flujo-de-dinero/",
   },
   {
     title: "¿Qué educación te falta?",
     description:
       "Una de las razones por las que los ricos se hacen más ricos, los pobres más pobres y la clase media batalla con las deudas, es que el tema del dinero no se enseña en la escuela. El niño puede graduarse con excelentes calificaciones, pero con la programación financiera y la mentalidad de una persona pobre.",
     icon: "bx:bxs-window-alt",
+    post: "/blog/objetivos-educativos/",
   },
   {
     title: "¿Cómo generas tus ingresos?",
     description:
       "¿Alguna vez te has preguntado cómo es que alguien que tiene dos y hasta tres trabajos, siempre está batallando con el dinero, mientras que la persona que parece estar siempre de vacaciones nunca parece estar trabajando? Para explicar ésto necesitas entender las diferentes formas de generar dinero.",
     icon: "bx:bxs-data",
+    post: "/blog/tipos-de-ingresos/",
   },
 ];
 ---
@@ -29,23 +32,28 @@ const features = [
     ¿Te has preguntado qué hacen diferente los ricos?
   </h2>
   <p class="text-lg mt-4 text-slate-600">
-    Compara tus respuestas con las de estas tres preguntas y pronto lo
-    averiguarás.
+    Tus respuestas a estas tres preguntas te ubicarán respecto a si haces lo
+    mismo que los ricos o tienes que ajustar.
   </p>
 </div>
 
 <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
   {
     features.map((item) => (
-      <div class="flex gap-4 items-start">
-        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
-          <Icon class="text-white" name={item.icon} />
+      <a href={item.post}>
+        <div class="flex md:flex-col lg:flex-row gap-4 items-start">
+          <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
+            <Icon class="text-white" name={item.icon} />
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+            <p class="text-slate-500 mt-2 leading-relaxed">
+              {item.description}
+            </p>
+            <Icon name="ph:arrow-right-light" class="w-8 mt-2" />
+          </div>
         </div>
-        <div>
-          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
-          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
-        </div>
-      </div>
+      </a>
     ))
   }
 </div>
