@@ -13,6 +13,11 @@ author: "Alfonso"
 tags: []
 ---
 
+import { Image } from "astro:assets";
+import Pobre from "../../assets/flujo-efectivo/flujo-efectivo-clase-pobre.jpg";
+import Media from "../../assets/flujo-efectivo/flujo-efectivo-clase-media.jpg";
+import Rico from "../../assets/flujo-efectivo/flujo-efectivo-clase-rica.jpg";
+
 Cuando escuchamos el término _“flujo de dinero”_ o _“flujo de efectivo”_ pensamos por lo general en el dinero que entra y que sale de nuestra bolsa.
 
 Pero realmente va más allá de eso, incluye también el flujo de efectivo entre los dos reportes financieros principales: **Estado de Resultados** y **Balance General**.
@@ -31,7 +36,13 @@ Su flujo de efectivo nunca llega a su _Balance General_, es decir, no adquiere n
 
 Gráficamente se podría representar de la siguiente manera:
 
-![Diagrama representando el flujo de efectivo de una persona pobre](../../assets/flujo-efectivo/flujo-efectivo-clase-pobre.jpg)
+<Image
+  src={Pobre}
+  alt="Diagrama representando el flujo de efectivo de una persona pobre"
+  format="avif"
+  quality="high"
+  class="mx-auto w-min rounded-lg"
+/>
 
 ## 2. Flujo de efectivo de una persona clase media
 
@@ -43,7 +54,13 @@ Las frases _“compra y paga a 12 meses sin intereses”_ o _“compra ahora y p
 
 Gráficamente se podría representar de la siguiente manera:
 
-![Diagrama representando el flujo de efectivo de una persona de la clase media](../../assets/flujo-efectivo/flujo-efectivo-clase-media.jpg)
+<Image
+  src={Media}
+  alt="Diagrama representando el flujo de efectivo de una persona de la clase media"
+  format="avif"
+  quality="high"
+  class="mx-auto w-min rounded-lg"
+/>
 
 ## 3. Flujo de efectivo de una persona rica
 
@@ -57,7 +74,13 @@ Por eso se dice que los ricos se vuelven más ricos, porque su ingreso está enf
 
 Gráficamente se podría representar de la siguiente manera:
 
-![Diagrama representando el flujo de efectivo de una persona rica](../../assets/flujo-efectivo/flujo-efectivo-clase-rica.jpg)
+<Image
+  src={Rico}
+  alt="Diagrama representando el flujo de efectivo de una persona rica"
+  format="avif"
+  quality="high"
+  class="mx-auto w-min rounded-lg"
+/>
 
 Una vez analizados los diferentes patrones del flujo de efectivo, ¿cuál de ellos te gustaría tener?
 
