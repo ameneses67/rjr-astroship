@@ -41,7 +41,7 @@ const features = [
   {
     features.map((item) => (
       <a href={item.post}>
-        <div class="flex md:flex-col lg:flex-row gap-4 items-start">
+        <div class="flex md:flex-col xl:flex-row gap-4 items-start hover:scale-105 hover:bg-slate-50 transition p-4 rounded-lg">
           <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
             <Icon class="text-white" name={item.icon} />
           </div>
@@ -50,7 +50,7 @@ const features = [
             <p class="text-slate-500 mt-2 leading-relaxed">
               {item.description}
             </p>
-            <Icon name="ph:arrow-right-light" class="w-8 mt-2" />
+            <Icon name="ph:arrow-right-light" class="w-8 mt-8" />
           </div>
         </div>
       </a>
