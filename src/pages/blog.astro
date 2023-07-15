@@ -4,6 +4,8 @@ import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
+import Button from "@components/ui/button.astro";
+import Link from "@components/ui/link.astro";
 
 // Filter blog entries with 'draft: false' & date before current date
 const publishedBlogEntries = await getCollection("blog", ({ data }) => {
@@ -29,9 +31,9 @@ publishedBlogEntries.sort(function (a, b) {
         {
           publishedBlogEntries.map((blogPostEntry, index) => (
             <li>
-              <a href={blogPostEntry.slug}>
-                <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
-                  <div class="h-56">
+              <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
+                <div class="h-80">
+                  <a href={blogPostEntry.slug}>
                     <Image
                       src={blogPostEntry.data.image.src}
                       alt={blogPostEntry.data.image.alt}
@@ -40,34 +42,39 @@ publishedBlogEntries.sort(function (a, b) {
                       quality="mid"
                       loading={index <= 2 ? "eager" : "lazy"}
                       decoding={index <= 2 ? "sync" : "async"}
-                      class="rounded-md w-full h-full object-cover object-center"
+                      class="rounded-md w-full h-full object-cover"
                     />
-                  </div>
-                  <div>
-                    <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
-                      {blogPostEntry.data.category}
-                    </span>
+                  </a>
+                </div>
+                <div>
+                  <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+                    {blogPostEntry.data.category}
+                  </span>
 
+                  <a href={blogPostEntry.slug}>
                     <h2 class="text-3xl font-semibold leading-snug tracking-tight">
                       {blogPostEntry.data.title}
                     </h2>
+                  </a>
 
-                    <div class="flex gap-2 mt-0">
-                      <span class="text-gray-400">
-                        {blogPostEntry.data.author}
-                      </span>
-                      <span class="text-gray-400">• </span>
-                      <time
-                        class="text-gray-400"
-                        datetime={blogPostEntry.data.publishDate.toISOString()}
-                      >
-                        {blogPostEntry.data.publishDate.toDateString()}
-                      </time>
-                    </div>
-                    <div class="mt-3">{blogPostEntry.data.snippet}</div>
+                  <div class="flex gap-2 mt-0">
+                    <span class="text-gray-400">
+                      {blogPostEntry.data.author}
+                    </span>
+                    <span class="text-gray-400">• </span>
+                    <time
+                      class="text-gray-400"
+                      datetime={blogPostEntry.data.publishDate.toISOString()}
+                    >
+                      {blogPostEntry.data.publishDate.toDateString()}
+                    </time>
                   </div>
+                  <div class="mt-3 mb-8">{blogPostEntry.data.snippet}</div>
+                  <Link href={blogPostEntry.slug} style="outline">
+                    Seguir leyendo...
+                  </Link>
                 </div>
-              </a>
+              </div>
             </li>
           ))
         }
