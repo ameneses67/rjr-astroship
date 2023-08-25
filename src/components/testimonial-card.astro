@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+
+import Jacinta from "../assets/testimonials/jacinta-ramirez.jpg";
+import Juan from "../assets/testimonials/juan-medina.jpg";
+
+const testimonios = [
+  {
+    nombre: "Jacienta Ramirez",
+    ocupacion: "Asistente dirección",
+    descripcion:
+      "Cuanta verdad en los artículos del blog. Mi perspectiva respecto al dinero empezó a cambiar tan pronto empecé a leerlos. Te abren los ojos ha una realidad diferente.",
+    foto: {
+      src: Jacinta,
+      alt: "Foto de Jacienta Ramírez",
+    },
+  },
+  {
+    nombre: "Juan Medina",
+    ocupacion: "Empleado",
+    descripcion:
+      "No tenía idea de cómo hacer un presupuesto. Ahora que puedo hacer un plan y fijar mis objetivos, el dinero  me comenzó a rendir más y ahora hasta puedo ahorrar.",
+    foto: {
+      src: Juan,
+      alt: "Foto de Juan Medina",
+    },
+  },
+];
+---
+
+<section class="container mx-auto">
+  {
+    testimonios.map((testimonio) => (
+      <div class="px-12 pb-8 border rounded-lg relative flex flex-col items-center gap-8 text-center">
+        <Image
+          src={testimonio.foto.src}
+          alt={testimonio.foto.alt}
+          class="rounded-full"
+        />
+        <p class="text-3xl max-w-xl font-sans">{testimonio.descripcion}</p>
+        <p>
+          <span>{testimonio.nombre}</span>
+          {testimonio.ocupacion}
+        </p>
+      </div>
+    ))
+  }
+</section>
