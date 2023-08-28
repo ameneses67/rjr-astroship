@@ -28,18 +28,23 @@ const testimonios = [
 ];
 ---
 
-<section class="container mx-auto">
+<section class="max-w-4xl mx-auto mb-8 mt-8 md:mt-0">
+  <h2 class="mb-28 sm:mb-40 text-center text-2xl sm:text-3xl font-bold">
+    Lo que otros dicen
+  </h2>
   {
     testimonios.map((testimonio) => (
-      <div class="px-12 pb-8 border rounded-lg relative flex flex-col items-center gap-8 text-center">
+      <div class="px-4 sm:px-12 pb-8 mb-24 sm:mb-48 border rounded-lg relative flex flex-col items-center gap-8 text-center">
         <Image
           src={testimonio.foto.src}
           alt={testimonio.foto.alt}
-          class="rounded-full"
+          class="w-36 sm:w-52 rounded-full absolute -translate-y-1/2 border"
         />
-        <p class="text-3xl max-w-xl font-sans">{testimonio.descripcion}</p>
-        <p>
-          <span>{testimonio.nombre}</span>
+        <p class="text-2xl sm:text-3xl max-w-xl font-sans mt-32">
+          {testimonio.descripcion}
+        </p>
+        <p class="sm:text-xl">
+          <span class="font-bold">{testimonio.nombre}</span> ∙
           {testimonio.ocupacion}
         </p>
       </div>
