@@ -3,6 +3,7 @@ import Container from "@components/container.astro";
 import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown-menu.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+import DarkMode from "./DarkMode.astro";
 
 const menuitems = [
   {
@@ -83,6 +84,7 @@ const menuitems = [
       </MenuItems>
     </Astronav>
     <div>
+      <DarkMode />
       <div class="hidden items-center gap-4 lg:flex">
         <a href="#">Log in</a>
         <Link href="#" size="md">Sign up</Link>
