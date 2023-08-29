@@ -21,17 +21,19 @@ publishedBlogEntries.sort(function (a, b) {
 <Layout title="Blog">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Blog</Fragment>
+      <Fragment slot="title">Nuestro Blog</Fragment>
       <Fragment slot="desc">
-        We write about building startups and thoughts going on our mind.
+        Escribimos sobre finanzas personales y mejores prácticas con el único
+        fin en mente de ayudar a la gente a tomar el control de su destino
+        financiero.
       </Fragment>
     </Sectionhead>
     <main class="mt-16">
-      <ul class="grid gap-16 max-w-4xl mx-auto">
+      <ul class="mx-auto grid max-w-4xl gap-16">
         {
           publishedBlogEntries.map((blogPostEntry, index) => (
             <li>
-              <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
+              <div class="grid items-center gap-5 md:grid-cols-2 md:gap-10">
                 <div class="h-80">
                   <a href={blogPostEntry.slug}>
                     <Image
@@ -42,34 +44,36 @@ publishedBlogEntries.sort(function (a, b) {
                       quality="mid"
                       loading={index <= 2 ? "eager" : "lazy"}
                       decoding={index <= 2 ? "sync" : "async"}
-                      class="rounded-md w-full h-full object-cover"
+                      class="h-full w-full rounded-md object-cover"
                     />
                   </a>
                 </div>
                 <div>
-                  <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+                  <span class="text-sm font-semibold uppercase tracking-wider text-indigo-500">
                     {blogPostEntry.data.category}
                   </span>
 
                   <a href={blogPostEntry.slug}>
-                    <h2 class="text-3xl font-semibold leading-snug tracking-tight">
+                    <h2 class="text-3xl font-semibold leading-snug tracking-tight text-slate-700 dark:text-slate-100">
                       {blogPostEntry.data.title}
                     </h2>
                   </a>
 
-                  <div class="flex gap-2 mt-0">
+                  <div class="mt-0 flex gap-2">
                     <span class="text-gray-400">
                       {blogPostEntry.data.author}
                     </span>
-                    <span class="text-gray-400">• </span>
+                    <span class="text-slate-400">• </span>
                     <time
-                      class="text-gray-400"
+                      class="text-slate-400"
                       datetime={blogPostEntry.data.publishDate.toISOString()}
                     >
                       {blogPostEntry.data.publishDate.toDateString()}
                     </time>
                   </div>
-                  <div class="mt-3 mb-8">{blogPostEntry.data.snippet}</div>
+                  <div class="mb-8 mt-3 dark:text-slate-400">
+                    {blogPostEntry.data.snippet}
+                  </div>
                   <Link href={blogPostEntry.slug} style="outline">
                     Seguir leyendo...
                   </Link>

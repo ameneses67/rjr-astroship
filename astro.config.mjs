@@ -6,7 +6,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "http://localhost:3000/",
+  site: "https://retirate-joven-y-rico.pages.dev",
   integrations: [mdx(), sitemap(), tailwind()],
   experimental: {
     assets: true,
