@@ -1,0 +1,114 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<div
+  class="ml-6 flex items-center border-l border-slate-200 pl-6 dark:border-slate-800"
+>
+  <button class="flex gap-1">
+    <!-- <button id="sun"> light</button>
+    <button id="moon">dark</button> -->
+    <span>
+      <Icon
+        id="sun"
+        name="fa-solid:sun"
+        class="h-6 w-6 cursor-pointer text-slate-500 dark:text-slate-400"
+      />
+    </span>
+    <span>
+      <Icon
+        id="moon"
+        name="akar-icons:moon-fill"
+        class="h-6 w-6 cursor-pointer text-slate-500 dark:text-slate-400"
+      />
+    </span>
+    <span>
+      <Icon
+        id="moon"
+        name="octicon:device-desktop-16"
+        class="h-6 w-6 cursor-pointer text-slate-500 dark:text-slate-400"
+      />
+    </span>
+  </button>
+  <ul
+    class="dark:highlight-white/5 absolute right-0 top-full z-50 mt-8 w-36 rounded-lg bg-white py-2 ring-1 dark:bg-slate-700 dark:text-slate-300 dark:ring-0"
+  >
+    <li
+      id="light"
+      class="flex cursor-pointer items-center px-2 py-1 font-semibold text-slate-900 hover:bg-slate-50 dark:text-white dark:hover:bg-slate-600/30"
+    >
+      <Icon
+        name="fa-solid:sun"
+        class="mr-2 h-6 w-6 text-slate-400 dark:text-slate-400"
+      />
+       Claro
+    </li>
+    <li
+      id="dark"
+      class="flex cursor-pointer items-center px-2 py-1 font-semibold text-slate-900 hover:bg-slate-50 dark:text-white dark:hover:bg-slate-600/30"
+    >
+      <Icon
+        name="akar-icons:moon-fill"
+        class="mr-2 h-6 w-6 text-slate-400 dark:text-slate-400"
+      />
+       Oscuro
+    </li>
+    <li
+      id="system"
+      class="flex cursor-pointer items-center px-2 py-1 font-semibold text-slate-900 hover:bg-slate-50 dark:text-white dark:hover:bg-slate-600/30"
+    >
+      <Icon
+        name="octicon:device-desktop-16"
+        class="mr-2 h-6 w-6 text-slate-400 dark:text-slate-400"
+      />
+       Sistema
+    </li>
+  </ul>
+</div>
+
+<script>
+  const theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+    return "light";
+  })();
+
+  if (theme === "light") {
+    document.documentElement.classList.remove("dark");
+  } else {
+    document.documentElement.classList.add("dark");
+  }
+  if (theme) {
+    window.localStorage.setItem("theme", theme);
+  }
+
+  const modes = document.querySelectorAll("li");
+
+  modes.forEach((mode) => {
+    mode.addEventListener("click", () => {
+      if (mode.id !== "system") {
+        localStorage.theme = mode.id;
+      } else {
+        localStorage.removeItem("theme");
+      }
+
+      darkClassToggle();
+    });
+  });
+
+  function darkClassToggle() {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }
+</script>

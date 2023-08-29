@@ -1,31 +1,12 @@
 ---
+// Librerias
 import { Image } from "astro:assets";
 
-import Jacinta from "../assets/testimonials/jacinta-ramirez.jpg";
-import Juan from "../assets/testimonials/juan-medina.jpg";
+// Data
+import {testimonios} from '../data/testimonials.js'
 
-const testimonios = [
-  {
-    nombre: "Jacienta Ramirez",
-    ocupacion: "Asistente dirección",
-    descripcion:
-      "Cuanta verdad en los artículos del blog. Mi perspectiva respecto al dinero empezó a cambiar tan pronto empecé a leerlos. Te abren los ojos ha una realidad diferente.",
-    foto: {
-      src: Jacinta,
-      alt: "Foto de Jacienta Ramírez",
-    },
-  },
-  {
-    nombre: "Juan Medina",
-    ocupacion: "Empleado",
-    descripcion:
-      "No tenía idea de cómo hacer un presupuesto. Ahora que puedo hacer un plan y fijar mis objetivos, el dinero  me comenzó a rendir más y ahora hasta puedo ahorrar.",
-    foto: {
-      src: Juan,
-      alt: "Foto de Juan Medina",
-    },
-  },
-];
+// Filtrar testimonios correspondientes
+const testimoniosInicio = testimonios.filter(testimonio => testimonio.pagina === 'inicio' && testimonio.seccion === 'testimonios')
 ---
 
 <section class="max-w-4xl mx-auto mb-8 mt-8 md:mt-0">
@@ -33,18 +14,18 @@ const testimonios = [
     Lo que otros dicen
   </h2>
   {
-    testimonios.map((testimonio) => (
+    testimoniosInicio.map((testimonio) => (
       <div class="px-4 sm:px-12 pb-8 mb-24 sm:mb-48 border rounded-lg relative flex flex-col items-center gap-8 text-center">
         <Image
           src={testimonio.foto.src}
           alt={testimonio.foto.alt}
-          class="w-36 sm:w-52 rounded-full absolute -translate-y-1/2 border"
+          class="w-36 h-36 sm:w-52 sm:h-52 object-cover rounded-full absolute -translate-y-1/2 border"
         />
         <p class="text-2xl sm:text-3xl max-w-xl font-sans mt-32">
           {testimonio.descripcion}
         </p>
-        <p class="sm:text-xl">
-          <span class="font-bold">{testimonio.nombre}</span> ∙
+        <p>
+          <span class="font-bold text-indigo-500">{testimonio.nombre}</span> ∙
           {testimonio.ocupacion}
         </p>
       </div>
