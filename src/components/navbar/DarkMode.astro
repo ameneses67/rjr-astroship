@@ -8,24 +8,15 @@ import { Icon } from "astro-icon";
   <button class="flex gap-1">
     <!-- <button id="sun"> light</button>
     <button id="moon">dark</button> -->
-    <span>
+    <span id="sun">
       <Icon
-        id="sun"
         name="fa-solid:sun"
         class="h-6 w-6 cursor-pointer text-slate-500 dark:text-slate-400"
       />
     </span>
-    <span>
+    <span id="moon">
       <Icon
-        id="moon"
         name="akar-icons:moon-fill"
-        class="h-6 w-6 cursor-pointer text-slate-500 dark:text-slate-400"
-      />
-    </span>
-    <span>
-      <Icon
-        id="moon"
-        name="octicon:device-desktop-16"
         class="h-6 w-6 cursor-pointer text-slate-500 dark:text-slate-400"
       />
     </span>
@@ -35,7 +26,7 @@ import { Icon } from "astro-icon";
   >
     <li
       id="light"
-      class="flex cursor-pointer items-center px-2 py-1 font-semibold text-slate-900 hover:bg-slate-50 dark:text-white dark:hover:bg-slate-600/30"
+      class="mode-selector flex cursor-pointer items-center px-2 py-1 font-semibold text-slate-900 hover:bg-slate-50 dark:text-white dark:hover:bg-slate-600/30"
     >
       <Icon
         name="fa-solid:sun"
@@ -45,7 +36,7 @@ import { Icon } from "astro-icon";
     </li>
     <li
       id="dark"
-      class="flex cursor-pointer items-center px-2 py-1 font-semibold text-slate-900 hover:bg-slate-50 dark:text-white dark:hover:bg-slate-600/30"
+      class="mode-selector flex cursor-pointer items-center px-2 py-1 font-semibold text-slate-900 hover:bg-slate-50 dark:text-white dark:hover:bg-slate-600/30"
     >
       <Icon
         name="akar-icons:moon-fill"
@@ -55,7 +46,7 @@ import { Icon } from "astro-icon";
     </li>
     <li
       id="system"
-      class="flex cursor-pointer items-center px-2 py-1 font-semibold text-slate-900 hover:bg-slate-50 dark:text-white dark:hover:bg-slate-600/30"
+      class="mode-selector flex cursor-pointer items-center px-2 py-1 font-semibold text-slate-900 hover:bg-slate-50 dark:text-white dark:hover:bg-slate-600/30"
     >
       <Icon
         name="octicon:device-desktop-16"
@@ -67,48 +58,28 @@ import { Icon } from "astro-icon";
 </div>
 
 <script>
-  const theme = (() => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
-    }
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    }
-    return "light";
-  })();
+  // const modeSelectors = document.querySelectorAll(".mode-selector");
 
-  if (theme === "light") {
-    document.documentElement.classList.remove("dark");
-  } else {
-    document.documentElement.classList.add("dark");
-  }
-  if (theme) {
-    window.localStorage.setItem("theme", theme);
-  }
+  // modeSelectors.forEach((modeSelector) =>
+  //   modeSelector.addEventListener("click", () => handleClick(modeSelector.id)),
+  // );
 
-  const modes = document.querySelectorAll("li");
+  // function handleClick(mode) {
+  //   if (mode === "light") {
+  //     document.documentElement.classList.remove("dark");
+  //     localStorage.theme = "light";
+  //     return;
+  //   }
 
-  modes.forEach((mode) => {
-    mode.addEventListener("click", () => {
-      if (mode.id !== "system") {
-        localStorage.theme = mode.id;
-      } else {
-        localStorage.removeItem("theme");
-      }
+  //   if (mode === "dark") {
+  //     document.documentElement.classList.add("dark");
+  //     localStorage.theme = "dark";
+  //     return;
+  //   }
 
-      darkClassToggle();
-    });
-  });
-
-  function darkClassToggle() {
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }
+  //   localStorage.removeItem("theme");
+  //   if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  //     document.documentElement.classList.remove("dark");
+  //   }
+  // }
 </script>
